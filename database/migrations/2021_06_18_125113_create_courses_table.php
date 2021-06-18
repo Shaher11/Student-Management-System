@@ -15,7 +15,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('code')->unique()->index();
+            $table->unsignedBigInteger('code')->unique()->index();        // We can change code type to be string replace "unsignedBigInteger To string"
             $table->string('name');                     
             $table->text('description');
             $table->timestamps();
