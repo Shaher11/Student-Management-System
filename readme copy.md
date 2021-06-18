@@ -1,7 +1,7 @@
-## About jobsQu Project
+## About Student Management System
 
-This is a jobs hiring web app called "jobsQu". 
-The technologies that were used to develop this app are "Laravel, Vue.js and GraphQL,"
+This is a student management web app. 
+The technologies that were used to develop this app are "Laravel, Vue.js TailwindCSS and RestAPI,"
 
 ### Technologies
 
