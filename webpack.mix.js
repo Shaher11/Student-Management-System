@@ -11,6 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+mix.postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);
+mix.js("resources/js/app.js", "public/js").vue();
+
+// for check the liberaries 
+if (mix.inProduction()) {
+    mix.version();
+}
