@@ -8,16 +8,24 @@ The technologies that were used to develop this app are "Laravel, Vue.js Tailwin
 - **[Laravel](https://laravel.com/docs/8.x)**
 - **[Vue.js](https://vuejs.org/v2/guide/)**
 - **[RESTAPI](https://)**
-- **[Tailwind](https://tailwindcss.com/docs/guides/laravel)**
+- **[TailwindCSS](https://tailwindcss.com/docs/guides/laravel)**
 
 ## Setup Steps
 
-Some basic commands are:
+Some basic Installation commands are:
 ```
 npm install
-npx tailwindcss init
-npm run dev
 ```
+
+basic commands for run project are:
+```
+php artisan migrate:fresh --seed
+npm run dev
+php artisan serve
+```
+
+
+
 ### Developed by:
 > Mohamed Ramadan -
 > moservices11@gmail.com
