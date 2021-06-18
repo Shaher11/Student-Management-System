@@ -18,15 +18,35 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register']]);
+        $this->middleware('JWT', ['except' => ['login'] ]);
     }
-
+    
+    
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    // public function login(Request $request)
+    // {
+    //     $validateData = $request->validate([
+    //         'email' => 'required',
+    //         'password' => 'required',
+         
+    //      ]);
+
+
+
+    //     $credentials = request(['email', 'password']);
+
+    //     if (! $token = auth()->attempt($credentials)) {
+    //         return response()->json(['error' => 'Email or Password Invalid'], 401);
+    //     }
+
+    //     return $this->respondWithToken($token);
+    // }
+
+        public function login()
     {
         $credentials = request(['email', 'password']);
 
@@ -42,8 +62,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request)
-    {
+    
+    // public function register(Request $request)
+    // {
         // $user = User::create(array_merge(
         //     $request->validate([
         //         'first_name' => 'required|alpha|min:2',
@@ -77,7 +98,7 @@ class AuthController extends Controller
         // DB::table('users')->insert($data);
         
         // return $this->login($request);
-    }
+    // }
     
     /**
      * Get the authenticated User.
