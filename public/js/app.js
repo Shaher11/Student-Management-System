@@ -42610,7 +42610,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row justify-content-center" }, [
-    _c("div", { staticClass: "col-xl-10 col-lg-12 col-md-9" }, [
+    _c("div", { staticClass: "col-xl-8 col-lg-8 col-md-9 pt-5" }, [
       _c("div", { staticClass: "card shadow-sm my-5" }, [
         _c("div", { staticClass: "card-body p-0" }, [
           _c("div", { staticClass: "row" }, [
