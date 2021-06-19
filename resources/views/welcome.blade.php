@@ -275,9 +275,9 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="{{ asset('backend/img/boy.png')}}" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <router-link to="/logout" class="ml-2 d-none d-lg-inline text-white small">Logout</router-link>
               </a>
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              {{-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
@@ -295,7 +295,7 @@
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
-              </div>
+              </div> --}}
             </li>
           </ul>
         </nav>
@@ -324,7 +324,7 @@
   </a>
   <script src="{{ asset('js/app.js')}}"></script>
   <script src="{{ asset('backend/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  {{-- <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
    
    {{-- <script type="text/javascript">
      let token = localStorage.getItem('token');
@@ -337,9 +337,9 @@
 
 
   <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  <script src="{{ asset('backend/js/ruang-admin.min.js')}}"></script>
-  {{-- <script src="{{ asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
-  <script src="{{ asset('backend/js/demo/chart-area-demo.js')}}"></script>   --}}
+  {{-- <script src="{{ asset('backend/js/ruang-admin.min.js')}}"></script> --}}
+  <script src="{{ asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
+  <script src="{{ asset('backend/js/demo/chart-area-demo.js')}}"></script>  
 </body>
 
 </html>
