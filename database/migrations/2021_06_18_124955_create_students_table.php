@@ -29,7 +29,7 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
 
             $table->date('birthdate');
-            $table->enum('gender', ['male', 'female']);
+            // $table->enum('gender', ['male', 'female']);
             $table->timestamps();
         });
     }

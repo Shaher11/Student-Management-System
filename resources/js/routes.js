@@ -16,11 +16,12 @@ let allStudent = require("./components/student/Index.vue").default;
 
 
 export const routes = [
-    { path: "/", component: Login, name: "/" },
-    { path: "/forget", component: Forget, name: "Forget" },
-    { path: "/logout", component: Logout, name: "Logout" },
-    { path: "/home", component: Home, name: "Home" },
-
-    { path: "/add-student", component: addStudent, name: "add-student" },
-    { path: "/all-students", component: allStudent, name: "all-students"}
-];
+           { path: "/", component: Login, name: "/" },
+           { path: "/forget", component: Forget, name: "Forget" },
+           { path: "/logout", component: Logout, name: "Logout" },
+           { path: "/home", component: Home, name: "Home" },
+           
+           // Students Routes
+           { path: "/add-student", component: addStudent, name: "add-student" },
+           { path: "/students", component: allStudent, name: "students" }
+       ];

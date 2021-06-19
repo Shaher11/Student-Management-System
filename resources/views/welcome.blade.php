@@ -49,7 +49,7 @@
           <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <router-link class="collapse-item" to="/add-student">Add Student</router-link>
-              <router-link class="collapse-item" to="/all-students">All Students</router-link>
+              <router-link class="collapse-item" to="/students">All Students</router-link>
             </div>
           </div>
         </li>
@@ -366,7 +366,7 @@
   </a>
   <script src="{{ asset('js/app.js')}}"></script>
   <script src="{{ asset('backend/vendor/jquery/jquery.min.js')}}"></script>
-  {{-- <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
+  <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
    
    <script type="text/javascript">
      let token = localStorage.getItem('token');
