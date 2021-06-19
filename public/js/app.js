@@ -2642,6 +2642,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
   created: function created() {
     if (!User.loggedIn()) {
@@ -2652,7 +2653,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      employees: [],
+      students: [],
       searchTerm: ''
     };
   },
@@ -2660,21 +2661,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     filtersearch: function filtersearch() {
       var _this = this;
 
-      return this.employees.filter(function (employee) {
-        return employee.name.match(_this.searchTerm);
+      return this.students.filter(function (student) {
+        return student.first_name.match(_this.searchTerm);
       });
     }
   },
   methods: {
-    allEmployee: function allEmployee() {
+    allStudent: function allStudent() {
       var _this2 = this;
 
-      axios.get('/api/employee/').then(function (_ref) {
+      axios.get('/api/student/').then(function (_ref) {
         var data = _ref.data;
-        return _this2.employees = data;
+        return _this2.students = data;
       })["catch"]();
     },
-    deleteEmployee: function deleteEmployee(id) {
+    deleteStudent: function deleteStudent(id) {
       var _this3 = this;
 
       Swal.fire({
@@ -2688,12 +2689,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('/api/employee/' + id).then(function () {
-            _this3.employees = _this3.employees.filter(function (employee) {
-              return employee.id != id;
+            _this3.students = _this3.students.filter(function (student) {
+              return student.id != id;
             });
           })["catch"](function () {
             _this3.$router.push({
-              name: 'employee'
+              name: 'students'
             });
           });
           Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
@@ -2702,7 +2703,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }
 }, "created", function created() {
-  this.allEmployee();
+  this.allStudent();
 }));
 
 /***/ }),
@@ -47217,7 +47218,7 @@ var render = function() {
       ],
       staticClass: "form-control",
       staticStyle: { width: "300px" },
-      attrs: { type: "text", placeholder: "Search Here" },
+      attrs: { type: "text", placeholder: "Search using First Name" },
       domProps: { value: _vm.searchTerm },
       on: {
         input: function($event) {
@@ -47245,21 +47246,29 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.filtersearch, function(employee) {
-                    return _c("tr", { key: employee.id }, [
-                      _c("td", [_vm._v(" " + _vm._s(employee.name) + " ")]),
+                  _vm._l(_vm.filtersearch, function(student) {
+                    return _c("tr", { key: student.id }, [
+                      _c("td", [_vm._v(_vm._s(student.identifier))]),
                       _vm._v(" "),
                       _c("td", [
-                        _c("img", {
-                          attrs: { src: employee.photo, id: "em_photo" }
-                        })
+                        _vm._v(
+                          _vm._s(
+                            student.first_name +
+                              " " +
+                              student.middle_name +
+                              " " +
+                              student.last_name
+                          )
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(employee.phone))]),
+                      _c("td", [_vm._v(_vm._s(student.level_id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(employee.sallery))]),
+                      _c("td", [_vm._v(_vm._s(student.program_id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(employee.joining_date))]),
+                      _c("td", [_vm._v(_vm._s(student.email))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(student.birthdate))]),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -47269,22 +47278,19 @@ var render = function() {
                             {
                               staticClass: "btn btn-sm btn-primary",
                               attrs: {
-                                to: {
-                                  name: "edit-employee",
-                                  params: { id: employee.id }
-                                }
+                                to: { name: "", params: { id: student.id } }
                               }
                             },
                             [_vm._v("Edit")]
                           ),
                           _vm._v(" "),
                           _c(
-                            "a",
+                            "button",
                             {
                               staticClass: "btn btn-sm btn-danger",
                               on: {
                                 click: function($event) {
-                                  return _vm.deleteEmployee(employee.id)
+                                  return _vm.deleteStudent(student.id)
                                 }
                               }
                             },
@@ -47347,8 +47353,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", [_vm._v("Date of birth")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Gender")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])

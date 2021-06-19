@@ -9,7 +9,7 @@
    
  </div>
 <br>
-   <input type="text" v-model="searchTerm" class="form-control" style="width: 300px;" placeholder="Search Here">
+   <input type="text" v-model="searchTerm" class="form-control" style="width: 300px;" placeholder="Search using First Name">
 
 
 <br>
@@ -31,22 +31,23 @@
                         <th>Program</th>
                         <th>Email</th>
                         <th>Date of birth</th>
-                        <th>Gender</th>
+                        <!-- <th>Gender</th> -->
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="employee in filtersearch" :key="employee.id">
-                        <td> {{ employee.name }} </td>
-                        <td><img :src="employee.photo" id="em_photo"></td>
-                        <td>{{ employee.phone }}</td>
-                        <td>{{ employee.sallery }}</td>
-                        <td>{{ employee.joining_date }}</td>
-            <td>
-   <router-link :to="{name: 'edit-employee', params:{id:employee.id}}" class="btn btn-sm btn-primary">Edit</router-link>
-
- <a @click="deleteEmployee(employee.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></a>
-            </td>
+        
+                      <tr v-for="student in filtersearch" :key="student.id">
+                        <td>{{ student.identifier }}</td>
+                        <td>{{ student.first_name +' '+ student.middle_name +' '+ student.last_name }}</td>
+                        <td>{{ student.level_id }}</td>
+                        <td>{{ student.program_id }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.birthdate }}</td>
+                        <td>
+                          <router-link :to="{name: '', params:{id:student.id}}" class="btn btn-sm btn-primary">Edit</router-link>
+                          <button @click="deleteStudent(student.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></button>
+                        </td>
                       </tr>
                     
                     </tbody>
@@ -77,25 +78,25 @@
     },
     data(){
       return{
-        employees:[],
+        students:[],
         searchTerm:''
       }
     },
     computed:{
       filtersearch(){
-      return this.employees.filter(employee => {
-         return employee.name.match(this.searchTerm)
+      return this.students.filter(student => {
+         return student.first_name.match(this.searchTerm)
       }) 
       }
-    },
+    },  
  
   methods:{
-    allEmployee(){
-      axios.get('/api/employee/')
-      .then(({data}) => (this.employees = data))
+    allStudent(){
+      axios.get('/api/student/')
+      .then(({data}) => (this.students = data))
       .catch()
     },
-  deleteEmployee(id){
+  deleteStudent(id){
              Swal.fire({
               title: 'Are you sure?',
               text: "You won't be able to revert this!",
@@ -108,12 +109,12 @@
               if (result.value) {
                 axios.delete('/api/employee/'+id)
                .then(() => {
-                this.employees = this.employees.filter(employee => {
-                  return employee.id != id
+                this.students = this.students.filter(student => {
+                  return student.id != id
                 })
                })
                .catch(() => {
-                this.$router.push({name: 'employee'})
+                this.$router.push({name: 'students'})
                })
                 Swal.fire(
                   'Deleted!',
@@ -127,7 +128,7 @@
 
   },
   created(){
-    this.allEmployee();
+    this.allStudent();
   } 
   
 
