@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LevelRequest;
+use App\Models\Level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class LevelController extends Controller
 {
@@ -14,17 +18,8 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $level = Level::all();
+        return response()->json($level);
     }
 
     /**
@@ -33,9 +28,10 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LevelRequest $request)
     {
-        //
+        $data = $request->validated();
+        return response()->json(Level::create($data), 200);
     }
 
     /**
@@ -46,18 +42,9 @@ class LevelController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $level = Level::findOrFail($id);
+        
+        return response()->json($level, 200);
     }
 
     /**
@@ -69,7 +56,11 @@ class LevelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array();
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+       
+        DB::table('levels')->where('id',$id)->update($data);
     }
 
     /**
@@ -80,6 +71,12 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $level = Level::findOrFail($id);
+        if (!$level) {
+            return response()->json(['message' => 'business is not found'], 404);
+        } else {
+            $level->delete();
+            return response()->json(['message' => 'business deleted successfuly'], 200);
+        }
     }
 }
