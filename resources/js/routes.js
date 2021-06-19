@@ -21,9 +21,9 @@ let addProgram = require("./components/program/Create.vue").default;
 let editProgram = require("./components/program/Edit.vue").default;
 
 // Levels component
-// let allLevels = require("./components/level/Index.vue").default;
-// let addLevel = require("./components/level/Create.vue").default;
-// let editLevel = require("./components/level/Edit.vue").default;
+let allLevels = require("./components/level/Index.vue").default;
+let addLevel = require("./components/level/Create.vue").default;
+let editLevel = require("./components/level/Edit.vue").default;
 
 export const routes = [
     { path: "/", component: Login, name: "/" },
@@ -47,7 +47,7 @@ export const routes = [
     { path: "/edit-program/:id", component: editProgram, name: "edit-program" },
     
     // Levels Routes
-    // { path: "/levels", component: allLevels, name: "levels" },
-    // { path: "/add-level", component: addLevel, name: "add-level" },
-    // { path: "/edit-level/:id", component: editLevel, name: "edit-level" },
+    { path: "/levels", component: allLevels, name: "levels" },
+    { path: "/add-level", component: addLevel, name: "add-level" },
+    { path: "/edit-level/:id", component: editLevel, name: "edit-level" },
 ];

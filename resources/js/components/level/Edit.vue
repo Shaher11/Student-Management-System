@@ -6,7 +6,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/courses" class="btn btn-primary">All Courses </router-link>
+  <router-link to="/levels" class="btn btn-primary">All Levels </router-link>
    
  </div>
 
@@ -20,21 +20,18 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Course</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Add Level</h1>
                   </div>
 
-      <form class="user" @submit.prevent="courseUpdate" enctype="multipart/form-data">
+      <form class="user" @submit.prevent="levelUpdate" enctype="multipart/form-data">
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputFirstName" placeholder=" Course Name" v-model="form.name">
+          <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputFirstName" placeholder=" Level Name" v-model="form.name">
             <small class="text-danger" v-if="errors.name"> {{ errors.name[0] }} </small>
         </div>
+     
         <div class="form-group">
-            <input type="number" class="form-control" id="exampleInputMiddleName" placeholder="Course Code" v-model="form.code">
-            <small class="text-danger" v-if="errors.code"> {{ errors.code[0] }} </small>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Code Description" v-model="form.description">
+            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Level Description" v-model="form.description">
             <small class="text-danger" v-if="errors.description"> {{ errors.description[0] }} </small>
         </div>
   
@@ -74,9 +71,8 @@
 
     data(){
     return {
-       form:{
+       form:{   
         name: '',
-        code: '',
         description: '',
       },
       errors:{}
@@ -84,18 +80,17 @@
   },
   created(){
   	let id = this.$route.params.id
-  	axios.get('/api/course/'+id)
+  	axios.get('/api/level/'+id)
   	.then(({data}) => (this.form = data))
   	.catch(console.log('error'))
   },
 
   methods:{
-   
-    courseUpdate(){
+    levelUpdate(){
         let id = this.$route.params.id
-        axios.patch('/api/course/'+id,this.form)
+        axios.patch('/api/level/'+id,this.form)
         .then(() => {
-          this.$router.push({ name: 'courses'})
+          this.$router.push({ name: 'levels'})
           Notification.success()
         })
         .catch(error =>this.errors = error.response.data.errors)
