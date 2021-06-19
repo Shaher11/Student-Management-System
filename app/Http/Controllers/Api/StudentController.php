@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -39,9 +40,13 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($student_id)
     {
-        //
+        $student = Student::findOrFail($student_id);
+        
+        return response()->json($student, 200);
+        
+  
     }
 
     /**
@@ -53,7 +58,25 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $student = Student::findOrFail($id);
+        // if (!$student) {
+        //     return response()->json(['message' => 'business is not found'], 404);
+        // } else {
+        //     $student->update($request->validated());
+        //     return response()->json($student, 200);
+        // }
+        $data = array();
+        $data['level_id'] = $request->level_id;
+        $data['program_id'] = $request->program_id;
+        $data['identifier'] = $request->identifier;
+        $data['first_name'] = $request->first_name;
+        $data['middle_name'] = $request->middle_name;
+        $data['last_name'] = $request->last_name;
+        $data['email'] = $request->email;
+        $data['birthdate'] = $request->birthdate;
+
+        $user = DB::table('students')->where('id',$id)->update($data);
+
     }
 
     /**
@@ -62,8 +85,14 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($student_id)
     {
-        //
+        $student = Student::findOrFail($student_id);
+        if (!$student) {
+            return response()->json(['message' => 'business is not found'], 404);
+        } else {
+            $student->delete();
+            return response()->json(['message' => 'business deleted successfuly'], 200);
+        }
     }
 }

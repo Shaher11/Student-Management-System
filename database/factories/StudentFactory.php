@@ -23,7 +23,7 @@ class StudentFactory extends Factory
      */
     public function definition()
     {
-        $gender = $this->faker->randomElement(['male', 'female']);
+        // $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
             'level_id' => Level::inRandomOrder()->first()->id,
@@ -35,7 +35,7 @@ class StudentFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'birthdate' => $this->faker->dateTimeBetween('-20 Years','-6 Years'),
-            'gender' => $gender,
+            // 'gender' => $gender,
         ];
     }
 }

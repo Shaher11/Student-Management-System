@@ -366,7 +366,7 @@
   </a>
   <script src="{{ asset('js/app.js')}}"></script>
   <script src="{{ asset('backend/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  {{-- <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
    
    <script type="text/javascript">
      let token = localStorage.getItem('token');

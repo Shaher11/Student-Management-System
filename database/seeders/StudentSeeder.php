@@ -14,7 +14,7 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::factory(100)->create();
+        Student::factory(10)->create();
         
         // ->each(function ($user) {
         //     $user->certificates()->saveMany(Certificate::factory( mt_rand(1,3) )
