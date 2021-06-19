@@ -32,32 +32,69 @@
         </a>
         <hr class="sidebar-divider my-0">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <router-link class="nav-link" to="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span></router-link>
         </li>
         <hr class="sidebar-divider">
         <div class="sidebar-heading">
           Features
         </div>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-            aria-expanded="true" aria-controls="collapseBootstrap">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
+            aria-expanded="true" aria-controls="collapseBootstrap1">
             <i class="far fa-fw fa-window-maximize"></i>
-            <span>Bootstrap UI</span>
+            <span>Students</span>
           </a>
-          <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Bootstrap UI</h6>
-              <a class="collapse-item" href="alerts.html">Alerts</a>
-              <a class="collapse-item" href="buttons.html">Buttons</a>
-              <a class="collapse-item" href="dropdowns.html">Dropdowns</a>
-              <a class="collapse-item" href="modals.html">Modals</a>
-              <a class="collapse-item" href="popovers.html">Popovers</a>
-              <a class="collapse-item" href="progress-bar.html">Progress Bars</a>
+              <router-link class="collapse-item" to="/add-student">Add Student</router-link>
+              <router-link class="collapse-item" to="/all-students">All Students</router-link>
             </div>
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
+            aria-expanded="true" aria-controls="collapseBootstrap2">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Courses</span>
+          </a>
+          <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link class="collapse-item" to="">Add Course</router-link>
+              <router-link class="collapse-item" to="">All Courses</router-link>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+            aria-expanded="true" aria-controls="collapseBootstrap3">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Programs</span>
+          </a>
+          <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link class="collapse-item" to="">Add Program</router-link>
+              <router-link class="collapse-item" to="">All Programs</router-link>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
+            aria-expanded="true" aria-controls="collapseBootstrap4">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Levels</span>
+          </a>
+          <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link class="collapse-item" to="">Add Level</router-link>
+              <router-link class="collapse-item" to="">All Levels</router-link>
+            </div>
+          </div>
+        </li>
+
+
+
         <li class="nav-item">
           <a class="nav-link" href="forms.html">
             <i class="fab fa-fw fa-wpforms"></i>
@@ -342,7 +379,7 @@
 
 
   <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  {{-- <script src="{{ asset('backend/js/ruang-admin.min.js')}}"></script> --}}
+  <script src="{{ asset('backend/js/ruang-admin.min.js')}}"></script>
   <script src="{{ asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
   <script src="{{ asset('backend/js/demo/chart-area-demo.js')}}"></script>  
 </body>
