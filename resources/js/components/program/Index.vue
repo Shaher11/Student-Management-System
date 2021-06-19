@@ -5,7 +5,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/add-course" class="btn btn-primary">Add Course </router-link>
+  <router-link to="/add-program" class="btn btn-primary">Add Program </router-link>
    
  </div>
 <br>
@@ -19,27 +19,27 @@
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Courses List</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Programs List</h6>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>Code</th>
-                        <th>Course Name</th>
+                        <th>Id</th>
+                        <th>Program Name</th>
                         <th>Description</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
         
-                      <tr v-for="course in filtersearch" :key="course.id">
-                        <td>{{ course.code }}</td>
-                        <td>{{ course.name }}</td>
-                        <td>{{ course.description }}</td>
+                      <tr v-for="program in filtersearch" :key="program.id">
+                        <td>{{ program.id }}</td>
+                        <td>{{ program.name }}</td>
+                        <td>{{ program.description }}</td>
                         <td>
-                          <!-- <router-link :to="{name: 'edit-course', params:{id:course.id}}" class="btn btn-sm btn-primary">Edit</router-link> -->
-                          <button @click="deleteCourse(course.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></button>
+                          <router-link :to="{name: 'edit-program', params:{id:program.id}}" class="btn btn-sm btn-primary">Edit</router-link>
+                          <button @click="deleteProgram(program.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></button>
                         </td>
                       </tr>
                     
@@ -71,25 +71,25 @@
     },
     data(){
       return{
-        courses:[],
+        programs:[],
         searchTerm:''
       }
     },
     computed:{
       filtersearch(){
-      return this.courses.filter(course => {
-         return course.name.match(this.searchTerm)
+      return this.programs.filter(program => {
+         return program.name.match(this.searchTerm)
       }) 
       }
     },  
  
   methods:{
-    allCourse(){
-      axios.get('/api/course/')
-      .then(({data}) => (this.courses = data))
+    allProgram(){
+      axios.get('/api/program/')
+      .then(({data}) => (this.programs = data))
       .catch()
     },
-  deleteCourse(id){
+  deleteProgram(id){
              Swal.fire({
               title: 'Are you sure?',
               text: "You won't be able to revert this!",
@@ -100,14 +100,14 @@
               confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if (result.value) {
-                axios.delete('/api/course/'+id)
+                axios.delete('/api/program/'+id)
                .then(() => {
-                this.courses = this.courses.filter(course => {
-                  return course.id != id
+                this.programs = this.programs.filter(program => {
+                  return program.id != id
                 })
                })
                .catch(() => {
-                this.$router.push({name: 'courses'})
+                this.$router.push({name: 'programs'})
                })
                 Swal.fire(
                   'Deleted!',
@@ -121,7 +121,7 @@
 
   },
   created(){
-    this.allCourse();
+    this.allProgram();
   } 
   
 

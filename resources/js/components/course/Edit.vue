@@ -6,7 +6,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/students" class="btn btn-primary">All Students </router-link>
+  <router-link to="/courses" class="btn btn-primary">All Courses </router-link>
    
  </div>
 
@@ -20,10 +20,10 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Student</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Add Course</h1>
                   </div>
 
-      <form class="user" @submit.prevent="studentUpdate" enctype="multipart/form-data">
+      <form class="user" @submit.prevent="courseUpdate" enctype="multipart/form-data">
 
         <div class="form-group">
             <input type="text" class="form-control" id="exampleInputFirstName" placeholder=" First Name" v-model="form.first_name">
@@ -42,35 +42,7 @@
             <input type="email" class="form-control" id="exampleInputFirstName" placeholder="Enter Email" v-model="form.email">
             <small class="text-danger" v-if="errors.email"> {{ errors.email[0] }} </small>
         </div>
-       
-        <div class="form-group">
-            <input type="number" class="form-control" id="exampleInputFirstName" placeholder="Enter Idintifier" v-model="form.identifier">
-            <small class="text-danger" v-if="errors.identifier"> {{ errors.identifier[0] }} </small>
-        </div> 
-   
-        <div class="form-group">
-            <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Birth Date" v-model="form.birthdate">
-            <small class="text-danger" v-if="errors.birthdate"> {{ errors.birthdate[0] }} </small>
-        </div>
-
-        <!-- <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">Gender</legend>
-                <div class="col-sm-9">
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio1">Male</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio2">Female</label>
-                    </div>
-                
-                </div>
-            </div>
-        </fieldset> -->
-
-
+  
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">Update</button>
         </div>

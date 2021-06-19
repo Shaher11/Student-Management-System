@@ -25,8 +25,8 @@ class CourseRequest extends FormRequest
     {
         return [
             "code" => "required|max:10|unique:courses",
-            "name" => "required|alpha|max:100",
-            "description" => "required|alpha|max:100",
+            "name" => "required|max:100",
+            "description" => "required|text|max:100",
         ];
     }
 }

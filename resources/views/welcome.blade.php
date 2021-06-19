@@ -61,8 +61,8 @@
           </a>
           <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <router-link class="collapse-item" to="">Add Course</router-link>
-              <router-link class="collapse-item" to="">All Courses</router-link>
+              <router-link class="collapse-item" to="/add-course">Add Course</router-link>
+              <router-link class="collapse-item" to="/courses">All Courses</router-link>
             </div>
           </div>
         </li>
@@ -74,8 +74,8 @@
           </a>
           <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <router-link class="collapse-item" to="">Add Program</router-link>
-              <router-link class="collapse-item" to="">All Programs</router-link>
+              <router-link class="collapse-item" to="/add-program">Add Program</router-link>
+              <router-link class="collapse-item" to="/programs">All Programs</router-link>
             </div>
           </div>
         </li>
@@ -87,8 +87,8 @@
           </a>
           <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <router-link class="collapse-item" to="">Add Level</router-link>
-              <router-link class="collapse-item" to="">All Levels</router-link>
+              <router-link class="collapse-item" to="/add-level">Add Level</router-link>
+              <router-link class="collapse-item" to="/levels">All Levels</router-link>
             </div>
           </div>
         </li>

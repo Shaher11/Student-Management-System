@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\LevelController;
+use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +41,6 @@ Route::group([
 
 
 Route::apiResource('/student', StudentController::class);
+Route::apiResource('/course', CourseController::class);
+Route::apiResource('/program', ProgramController::class);
+Route::apiResource('/level', LevelController::class);

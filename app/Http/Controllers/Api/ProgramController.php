@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProgramRequest;
+use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -14,18 +17,11 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+        $program = Program::all();
+        return response()->json($program);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -33,9 +29,10 @@ class ProgramController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgramRequest $request)
     {
-        //
+        $data = $request->validated();
+        return response()->json(Program::create($data), 200);
     }
 
     /**
@@ -46,20 +43,10 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return response()->json($program, 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -69,7 +56,11 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array();
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+       
+        DB::table('programs')->where('id',$id)->update($data);
     }
 
     /**
@@ -80,6 +71,12 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        if (!$program) {
+            return response()->json(['message' => 'business is not found'], 404);
+        } else {
+            $program->delete();
+            return response()->json(['message' => 'business deleted successfuly'], 200);
+        }
     }
 }

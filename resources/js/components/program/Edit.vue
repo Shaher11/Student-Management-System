@@ -6,7 +6,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/courses" class="btn btn-primary">All Courses </router-link>
+  <router-link to="/programs" class="btn btn-primary">All Programs </router-link>
    
  </div>
 
@@ -20,28 +20,23 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Course</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Add Program</h1>
                   </div>
 
-      <form class="user" @submit.prevent="courseInsert" enctype="multipart/form-data">
+      <form class="user" @submit.prevent="programUpdate" enctype="multipart/form-data">
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputFirstName" placeholder=" Course Name" v-model="form.name">
+          <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputFirstName" placeholder=" Program Name" v-model="form.name">
             <small class="text-danger" v-if="errors.name"> {{ errors.name[0] }} </small>
         </div>
+     
         <div class="form-group">
-            <input type="number" class="form-control" id="exampleInputMiddleName" placeholder="Course Code" v-model="form.code">
-            <small class="text-danger" v-if="errors.code"> {{ errors.code[0] }} </small>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Code Description" v-model="form.description">
+            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Program Description" v-model="form.description">
             <small class="text-danger" v-if="errors.description"> {{ errors.description[0] }} </small>
         </div>
-
-
-
+  
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          <button type="submit" class="btn btn-primary btn-block">Update</button>
         </div>
         
       </form>
@@ -64,6 +59,7 @@
 
 </template>
 
+
 <script type="text/javascript">
   
   export default {
@@ -75,30 +71,38 @@
 
     data(){
     return {
-      form:{
-        name: null,
-        code: null,
-        description: null,
-   
+       form:{   
+
+        name: '',
+        code: '',
+        description: '',
+     
       },
       errors:{}
     }
-  }, 
+  },
+  created(){
+  	let id = this.$route.params.id
+  	axios.get('/api/program/'+id)
+  	.then(({data}) => (this.form = data))
+  	.catch(console.log('error'))
+  },
 
   methods:{
-    courseInsert(){
-       axios.post('/api/course',this.form)
-       .then(() => {
-        this.$router.push({ name: 'courses'})
-        Notification.success()
-       })
-       .catch(error =>this.errors = error.response.data.errors)
-     },
+    programUpdate(){
+        let id = this.$route.params.id
+        axios.patch('/api/program/'+id,this.form)
+        .then(() => {
+          this.$router.push({ name: 'programs'})
+          Notification.success()
+        })
+        .catch(error =>this.errors = error.response.data.errors)
+    },
+  } 
+
+
   }
-
-
-
-} 
+   
 </script>
 
 
