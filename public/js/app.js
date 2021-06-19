@@ -1984,6 +1984,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     if (!User.loggedIn()) {
@@ -47670,8 +47739,586 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container-fluid", attrs: { id: "container-wrapper" } },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-sm-flex align-items-center justify-content-between mb-4"
+          },
+          [
+            _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+              _vm._v("Dashboard")
+            ]),
+            _vm._v(" "),
+            _c("ol", { staticClass: "breadcrumb" }, [
+              _c("li", { staticClass: "breadcrumb-item" }, [
+                _c("a", { attrs: { href: "./" } }, [_vm._v("Home")])
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "breadcrumb-item active",
+                  attrs: { "aria-current": "page" }
+                },
+                [_vm._v("Dashboard")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mb-3" }, [
+          _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
+            _c("div", { staticClass: "card h-100" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "row no-gutters align-items-center" },
+                  [
+                    _c("div", { staticClass: "col mr-2" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-xs font-weight-bold text-uppercase mb-1"
+                        },
+                        [_vm._v("All Students")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                        },
+                        [_vm._v("366")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2 mb-0 text-muted text-xs" },
+                        [
+                          _c("span", { staticClass: "text-success mr-2" }, [
+                            _c("i", { staticClass: "fas fa-arrow-up" }),
+                            _vm._v(" 20.4%")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Since last month")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("i", { staticClass: "fas fa-users fa-2x text-info" })
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
+            _c("div", { staticClass: "card h-100" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "row no-gutters align-items-center" },
+                  [
+                    _c("div", { staticClass: "col mr-2" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-xs font-weight-bold text-uppercase mb-1"
+                        },
+                        [_vm._v("Courses")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "h5 mb-0 font-weight-bold text-gray-800"
+                        },
+                        [_vm._v("650")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2 mb-0 text-muted text-xs" },
+                        [
+                          _c("span", { staticClass: "text-success mr-2" }, [
+                            _c("i", { staticClass: "fas fa-arrow-up" }),
+                            _vm._v(" 12%")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Since last years")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("i", {
+                        staticClass: "fas fa-shopping-cart fa-2x text-success"
+                      })
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
+            _c("div", { staticClass: "card h-100" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col mr-2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "text-xs font-weight-bold text-uppercase mb-1"
+                      },
+                      [_vm._v("Programs")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
+                      [_vm._v("$40,000")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-2 mb-0 text-muted text-xs" }, [
+                      _c("span", { staticClass: "text-success mr-2" }, [
+                        _c("i", { staticClass: "fa fa-arrow-up" }),
+                        _vm._v(" 3.48%")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Since last month")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("i", {
+                      staticClass: "fas fa-calendar fa-2x text-primary"
+                    })
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
+            _c("div", { staticClass: "card h-100" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "row no-gutters align-items-center" },
+                  [
+                    _c("div", { staticClass: "col mr-2" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-xs font-weight-bold text-uppercase mb-1"
+                        },
+                        [_vm._v("Levels")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "h5 mb-0 font-weight-bold text-gray-800"
+                        },
+                        [_vm._v("18")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2 mb-0 text-muted text-xs" },
+                        [
+                          _c("span", { staticClass: "text-danger mr-2" }, [
+                            _c("i", { staticClass: "fas fa-arrow-down" }),
+                            _vm._v(" 1.10%")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Since yesterday")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("i", {
+                        staticClass: "fas fa-comments fa-2x text-warning"
+                      })
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-8 col-lg-7" }, [
+            _c("div", { staticClass: "card mb-4" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                },
+                [
+                  _c(
+                    "h6",
+                    { staticClass: "m-0 font-weight-bold text-primary" },
+                    [_vm._v("Monthly Recap Report")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown no-arrow" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-toggle",
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass:
+                            "fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "dropdown-menu dropdown-menu-right shadow animated--fade-in",
+                        attrs: { "aria-labelledby": "dropdownMenuLink" }
+                      },
+                      [
+                        _c("div", { staticClass: "dropdown-header" }, [
+                          _vm._v("Dropdown Header:")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Action")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Another action")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "dropdown-divider" }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Something else here")]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "chart-area" }, [
+                  _c("canvas", { attrs: { id: "myAreaChart" } })
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-4 col-lg-5" }, [
+            _c("div", { staticClass: "card mb-4" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                },
+                [
+                  _c(
+                    "h6",
+                    { staticClass: "m-0 font-weight-bold text-primary" },
+                    [_vm._v("Programs Sold")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown no-arrow" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-toggle btn btn-primary btn-sm",
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _vm._v("\n               Month "),
+                        _c("i", { staticClass: "fas fa-chevron-down" })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "dropdown-menu dropdown-menu-right shadow animated--fade-in",
+                        attrs: { "aria-labelledby": "dropdownMenuLink" }
+                      },
+                      [
+                        _c("div", { staticClass: "dropdown-header" }, [
+                          _vm._v("Select Periode")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Today")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Week")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item active",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Month")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("This Year")]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "mb-3" }, [
+                  _c("div", { staticClass: "small text-gray-500" }, [
+                    _vm._v("Oblong T-Shirt\n               "),
+                    _c("div", { staticClass: "small float-right" }, [
+                      _c("b", [_vm._v("600 of 800 Items")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress",
+                      staticStyle: { height: "12px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "progress-bar bg-warning",
+                        staticStyle: { width: "80%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuenow": "80",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c("div", { staticClass: "small text-gray-500" }, [
+                    _vm._v("Gundam 90'Editions\n               "),
+                    _c("div", { staticClass: "small float-right" }, [
+                      _c("b", [_vm._v("500 of 800 Items")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress",
+                      staticStyle: { height: "12px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "progress-bar bg-success",
+                        staticStyle: { width: "70%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuenow": "70",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c("div", { staticClass: "small text-gray-500" }, [
+                    _vm._v("Rounded Hat\n               "),
+                    _c("div", { staticClass: "small float-right" }, [
+                      _c("b", [_vm._v("455 of 800 Items")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress",
+                      staticStyle: { height: "12px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "progress-bar bg-danger",
+                        staticStyle: { width: "55%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuenow": "55",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c("div", { staticClass: "small text-gray-500" }, [
+                    _vm._v("Indomie Goreng\n               "),
+                    _c("div", { staticClass: "small float-right" }, [
+                      _c("b", [_vm._v("400 of 800 Items")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress",
+                      staticStyle: { height: "12px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "progress-bar bg-info",
+                        staticStyle: { width: "50%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuenow": "50",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c("div", { staticClass: "small text-gray-500" }, [
+                    _vm._v("Remote Control Car Racing\n               "),
+                    _c("div", { staticClass: "small float-right" }, [
+                      _c("b", [_vm._v("200 of 800 Items")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress",
+                      staticStyle: { height: "12px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "progress-bar bg-success",
+                        staticStyle: { width: "30%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuenow": "30",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer text-center" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "m-0 small text-primary card-link",
+                    attrs: { href: "#" }
+                  },
+                  [
+                    _vm._v("View More "),
+                    _c("i", { staticClass: "fas fa-chevron-right" })
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
 
 
 
