@@ -31,12 +31,13 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $data = $request->validated();
-        
-        // $courses = [];   
-        
         $student= Student::create($data);
+
+        foreach ($request->course_ids as $course_id) {
+            $student->courses()->attach($course_id);
+        }
   
-        // $student->courses()->attach($courses);
+
      
         return response()->json($student, 200);
     }
@@ -52,7 +53,7 @@ class StudentController extends Controller
         $student = Student::findOrFail($student_id); 
         $student_course = $student->courses; 
         
-        return response()->json([$student, $student_course], 200);
+        return response()->json($student, 200);
 
         
     }

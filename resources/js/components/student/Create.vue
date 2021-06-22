@@ -69,7 +69,7 @@
         </div>
         <div class="form-group">
           <label for="levels">Select Courses:</label>
-						<select  class="form-control form-control-sm mb-3 " filterable multiple placeholder="Select Course" v-model="form.course_id">
+						<select  class="form-control form-control-sm mb-3 " filterable multiple placeholder="Select Course" v-model="form.course_ids">
               
 							<option v-for="course in courses" :value="course.id" :key="course.id">
                 {{ course.name }}
@@ -131,7 +131,7 @@
         level_id: null,
         program_id: null,
         birthdate: null,
-        course_id : [],
+        course_ids : [],
       },
       errors:{}
     }

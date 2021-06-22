@@ -3569,7 +3569,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         level_id: null,
         program_id: null,
         birthdate: null,
-        course_id: []
+        course_ids: []
       },
       errors: {}
     };
@@ -50929,8 +50929,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.course_id,
-                                expression: "form.course_id"
+                                value: _vm.form.course_ids,
+                                expression: "form.course_ids"
                               }
                             ],
                             staticClass: "form-control form-control-sm mb-3 ",
@@ -50951,7 +50951,7 @@ var render = function() {
                                   })
                                 _vm.$set(
                                   _vm.form,
-                                  "course_id",
+                                  "course_ids",
                                   $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
