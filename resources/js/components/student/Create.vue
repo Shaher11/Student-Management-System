@@ -30,7 +30,7 @@
             <small class="text-danger" v-if="errors.first_name"> {{ errors.first_name[0] }} </small>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputMiddleName" placeholder="Middle Name" v-model="form.middle_name">
+            <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Middle Name" v-model="form.middle_name">
             <small class="text-danger" v-if="errors.middle_name"> {{ errors.middle_name[0] }} </small>
         </div>
         <div class="form-group">
@@ -47,30 +47,42 @@
             <input type="number" class="form-control" id="exampleInputFirstName" placeholder="Enter Idintifier" v-model="form.identifier">
             <small class="text-danger" v-if="errors.identifier"> {{ errors.identifier[0] }} </small>
         </div> 
-   
+
+        <div class="form-group">
+          <label for="levels">Select Level:</label>
+          <select class="form-control form-control-sm mb-3" placeholder="Select Level" v-model="form.level_id">
+              <option v-for="level in levels" :key="level.id" :value="level.id">
+                {{ level.name }}
+              </option>
+          </select>
+          <small class="text-danger" v-if="errors.level_id"> {{ errors.level_id[0] }} </small>
+        </div>
+
+        <div class="form-group">
+          <label for="levels">Select Program:</label>
+          <select class="form-control form-control-sm mb-3" placeholder="Select Program" v-model="form.program_id">
+              <option v-for="program in programs" :key="program.id" :value="program.id">
+                {{ program.name }}
+              </option>
+          </select>
+          <small class="text-danger" v-if="errors.program_id"> {{ errors.program_id[0] }} </small>
+        </div>
+        <div class="form-group">
+          <label for="levels">Select Courses:</label>
+						<select  class="form-control form-control-sm mb-3 " filterable multiple placeholder="Select Course" v-model="form.course_id">
+              
+							<option v-for="course in courses" :value="course.id" :key="course.id">
+                {{ course.name }}
+                </option>
+						</select>
+        </div>
+
+     
+
         <div class="form-group">
             <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Birth Date" v-model="form.birthdate">
             <small class="text-danger" v-if="errors.birthdate"> {{ errors.birthdate[0] }} </small>
         </div>
-
-        <!-- <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">Gender</legend>
-                <div class="col-sm-9">
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio1">Male</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio2">Female</label>
-                    </div>
-                
-                </div>
-            </div>
-        </fieldset> -->
-
-
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
@@ -106,22 +118,43 @@
 
     data(){
     return {
+      levels:[],
+      programs:[],
+      courses:[],
+
       form:{
-        level_id: null,
-        program_id: null,
-        identifier: null,
         first_name: null,
         middle_name: null,
         last_name: null,
         email: null,
+        identifier: null,
+        level_id: null,
+        program_id: null,
         birthdate: null,
-        // gender: null,
+        course_id : [],
       },
       errors:{}
     }
   }, 
 
   methods:{
+    allLevels(){
+      axios.get('/api/level/')
+      .then(({data}) => (this.levels = data))
+      .catch()
+    },
+
+    allPrograms(){
+      axios.get('/api/program/')
+      .then(({data}) => (this.programs = data))
+      .catch()
+    },
+    allCourses(){
+      axios.get('/api/course/')
+      .then(({data}) => (this.courses = data))
+      .catch()
+    },
+
     studentInsert(){
        axios.post('/api/student',this.form)
        .then(() => {
@@ -130,7 +163,13 @@
        })
        .catch(error =>this.errors = error.response.data.errors)
      },
-  }
+  },
+
+  created(){
+    this.allLevels();
+    this.allPrograms();
+    this.allCourses();
+  } 
 
 
 

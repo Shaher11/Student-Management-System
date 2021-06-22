@@ -20,7 +20,7 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Level</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Edit Level</h1>
                   </div>
 
       <form class="user" @submit.prevent="levelUpdate" enctype="multipart/form-data">

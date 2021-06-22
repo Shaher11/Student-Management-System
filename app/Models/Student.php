@@ -27,11 +27,14 @@ class Student extends Model
         return $this->first_name.' '.$this->middle_name.' '.$this->last_name;
     }
 
-    public function level()
+    // public function level()
+    // {
+    //     return $this->belongsTo(Level::class);
+    // }
+     public function level()
     {
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo('App\Models\Level', 'level_id');
     }
-
     public function program()
     {
         return $this->belongsTo(Program::class);
@@ -39,7 +42,7 @@ class Student extends Model
     
     public function courses()
     {
-        return $this->belongsToMany(Course::class)->withTimestamps;
+        return $this->belongsToMany(Course::class)->withTimestamps();
     }
 
     

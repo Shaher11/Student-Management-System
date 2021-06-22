@@ -9,6 +9,8 @@ let Home = require("./components/Home.vue").default;
 let allStudents = require("./components/student/Index.vue").default;
 let addStudent = require("./components/student/Create.vue").default;
 let editStudent = require("./components/student/Edit.vue").default;
+let showStudent = require("./components/student/Show.vue").default;
+// let addStudentCourse = require("./components/student/Addcourse.vue").default;
 
 // Courses component
 let allCourses = require("./components/course/Index.vue").default;
@@ -35,6 +37,8 @@ export const routes = [
     { path: "/students", component: allStudents, name: "students" },
     { path: "/add-student", component: addStudent, name: "add-student" },
     { path: "/edit-student/:id", component: editStudent, name: "edit-student"},
+    { path: "/student-profile/:id", component: showStudent, name: "student-profile"},
+    // { path: "/student-course", component: addStudentCourse, name: "add-student-course"},
 
     // Courses Routes
     { path: "/courses", component: allCourses, name: "courses" },

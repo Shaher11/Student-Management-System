@@ -20,7 +20,7 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Course</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Edit Course</h1>
                   </div>
 
       <form class="user" @submit.prevent="courseUpdate" enctype="multipart/form-data">
@@ -90,7 +90,6 @@
   },
 
   methods:{
-   
     courseUpdate(){
         let id = this.$route.params.id
         axios.patch('/api/course/'+id,this.form)
@@ -103,7 +102,7 @@
   } 
 
 
-  }
+}
    
 </script>
 

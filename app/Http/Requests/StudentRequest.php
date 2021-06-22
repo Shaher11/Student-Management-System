@@ -30,6 +30,9 @@ class StudentRequest extends FormRequest
             "identifier" => "required|max:10|unique:students",
             "email" => "required|email:rfc,dns|unique:students",
             "birthdate" => "required|date",
+            "level_id" => "required",
+            "program_id" => "required",
+            
             // "gender" => "required",
         ];
     }

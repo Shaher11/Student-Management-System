@@ -31,7 +31,14 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $data = $request->validated();
-        return response()->json(Student::create($data), 200);
+        
+        // $courses = [];   
+        
+        $student= Student::create($data);
+  
+        // $student->courses()->attach($courses);
+     
+        return response()->json($student, 200);
     }
 
     /**
@@ -42,12 +49,21 @@ class StudentController extends Controller
      */
     public function show($student_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = Student::findOrFail($student_id); 
+        $student_course = $student->courses; 
         
-        return response()->json($student, 200);
+        return response()->json([$student, $student_course], 200);
+
         
-  
     }
+    
+    // public function getStudentCourses($student_id){
+        
+    //     $student = Student::findOrFail($student_id);
+    //     $courses = $student->courses();
+        
+    //     return response()->json($courses, 200);
+    // }
 
     /**
      * Update the specified resource in storage.

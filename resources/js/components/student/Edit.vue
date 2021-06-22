@@ -20,7 +20,7 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Student</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Edit Student</h1>
                   </div>
 
       <form class="user" @submit.prevent="studentUpdate" enctype="multipart/form-data">
@@ -47,29 +47,31 @@
             <input type="number" class="form-control" id="exampleInputFirstName" placeholder="Enter Idintifier" v-model="form.identifier">
             <small class="text-danger" v-if="errors.identifier"> {{ errors.identifier[0] }} </small>
         </div> 
+        
+        <div class="form-group">
+          <label for="levels">Select Level:</label>
+          <select class="form-control form-control-sm mb-3" v-model="form.level_id">
+              <option v-for="level in levels" :key="level.id" :value="level.id">
+                {{ level.name }}
+              </option>
+          </select>
+          <small class="text-danger" v-if="errors.level_id"> {{ errors.level_id[0] }} </small>
+        </div>
+
+        <div class="form-group">
+          <label for="levels">Select Program:</label>
+          <select class="form-control form-control-sm mb-3" v-model="form.program_id">
+              <option v-for="program in programs" :key="program.id" :value="program.id">
+                {{ program.name }}
+              </option>
+          </select>
+          <small class="text-danger" v-if="errors.program_id"> {{ errors.program_id[0] }} </small>
+        </div>
    
         <div class="form-group">
             <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Birth Date" v-model="form.birthdate">
             <small class="text-danger" v-if="errors.birthdate"> {{ errors.birthdate[0] }} </small>
         </div>
-
-        <!-- <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">Gender</legend>
-                <div class="col-sm-9">
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio1">Male</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio2">Female</label>
-                    </div>
-                
-                </div>
-            </div>
-        </fieldset> -->
-
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">Update</button>
@@ -107,7 +109,10 @@
 
     data(){
     return {
-       form:{
+      levels:[],
+      programs:[],
+       
+      form:{
         level_id: '',
         program_id: '',
         identifier: '',
@@ -116,44 +121,50 @@
         last_name: '',
         email: '',
         birthdate: '',
-        // gender: null,
       },
       errors:{}
     }
   },
+
+
   created(){
   	let id = this.$route.params.id
   	axios.get('/api/student/'+id)
   	.then(({data}) => (this.form = data))
   	.catch(console.log('error'))
   },
+  
+  // methods:{
+  //   allLevels(){
+  //     axios.get('/api/level/')
+  //     .then(({data}) => (this.levels = data))
+  //     .catch()
+  //   },
+  //   allPrograms(){
+  //     axios.get('/api/program/')
+  //     .then(({data}) => (this.programs = data))
+  //     .catch()
+  //   },
+  // },
+  // created(){
+  //   this.allLevels();
+  //   this.allPrograms();
+  // }, 
 
   methods:{
-    // onFileSelected(event){
-    //  let file = event.target.files[0];
-    //  if (file.size > 1048770) {
-    //   Notification.image_validation()
-    //  }else{
-    //   let reader = new FileReader();
-    //   reader.onload = event =>{
-    //     this.form.newphoto = event.target.result
-       
-    //   };
-    //   reader.readAsDataURL(file);
-    //  }
+      studentUpdate(){
+          let id = this.$route.params.id
+          axios.patch('/api/student/'+id,this.form)
+          .then(() => {
+            this.$router.push({ name: 'students'})
+            Notification.success()
+          })
+          .catch(error =>this.errors = error.response.data.errors)
+      },
+      
+    }
 
-    // },
 
-    studentUpdate(){
-        let id = this.$route.params.id
-        axios.patch('/api/student/'+id,this.form)
-        .then(() => {
-          this.$router.push({ name: 'students'})
-          Notification.success()
-        })
-        .catch(error =>this.errors = error.response.data.errors)
-    },
-  } 
 
 
   }
