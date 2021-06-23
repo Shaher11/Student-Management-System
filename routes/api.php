@@ -41,6 +41,9 @@ Route::group([
 
 
 Route::apiResource('/student', StudentController::class);
+Route::post('/student/addCourse', [StudentController::class, 'addCourse'])->name('student.addCourse');
+
+
 Route::apiResource('/course', CourseController::class);
 Route::apiResource('/program', ProgramController::class);
 Route::apiResource('/level', LevelController::class);

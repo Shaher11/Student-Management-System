@@ -29,6 +29,7 @@
         "sweetalert2": "^11.0.17",
         "tailwind": "^4.0.0",
         "tailwindcss": "^2.2.2",
+        "vue-clickaway": "^2.2.2",
         "vue-router": "^3.5.1"
     }
 }

@@ -42,7 +42,7 @@ class Student extends Model
     
     public function courses()
     {
-        return $this->belongsToMany(Course::class)->withTimestamps();
+        return $this->belongsToMany(Course::class)->withTimestamps()->withPivot('work_out','activity_out','final_out');
     }
 
     

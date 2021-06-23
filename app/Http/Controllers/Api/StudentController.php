@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentRequest;
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,11 +37,9 @@ class StudentController extends Controller
         foreach ($request->course_ids as $course_id) {
             $student->courses()->attach($course_id);
         }
-  
-
-     
         return response()->json($student, 200);
     }
+
 
     /**
      * Display the specified resource.
@@ -55,16 +54,26 @@ class StudentController extends Controller
         
         return response()->json($student, 200);
 
-        
     }
-    
-    // public function getStudentCourses($student_id){
+   
+    public function addCourse(Request $request)
+    {
+        $student = Student::find($request->student_id);
         
-    //     $student = Student::findOrFail($student_id);
-    //     $courses = $student->courses();
+        $course_ids = $request->course_ids;
+        // group    = student
+        // subject  = course
         
-    //     return response()->json($courses, 200);
-    // }
+        $student_course = DB::table('course_student')->where('student_id', $student->id)->whereIn('course_id', $course_ids)->first();
+        if ($student_course === null) {
+            foreach ($course_ids as $course) {
+                $student->courses()->attach((int)$course);
+            }
+            return response()->json($student_course , 200);
+        } else {
+             return response()->json()->with("error", "Subject has already assigned");
+        }
+    }
 
     /**
      * Update the specified resource in storage.
