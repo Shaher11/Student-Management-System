@@ -4250,6 +4250,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4276,7 +4331,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       student: {},
       showBoards: false,
       showModel: false,
-      searchTerm: ''
+      searchTerm: '',
+      courses: []
     };
   },
   // mounted(){
@@ -4286,31 +4342,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_1__.directive
   },
   methods: {
-    // allCourses(){
-    //   axios.get('/api/course/')
-    //   .then(({data}) => (this.courses = data))
-    //   .catch()
-    // },
-    getStudent: function getStudent() {
+    allCourses: function allCourses() {
       var _this = this;
 
-      var id = this.$route.params.id;
-      axios.get('/api/student/' + id).then(function (_ref) {
+      axios.get('/api/course/').then(function (_ref) {
         var data = _ref.data;
-        return _this.student = data;
+        return _this.courses = data;
+      })["catch"]();
+    },
+    getStudent: function getStudent() {
+      var _this2 = this;
+
+      var id = this.$route.params.id;
+      axios.get('/api/student/' + id).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.student = data;
       })["catch"](console.log('error'));
     },
     insertCourse: function insertCourse() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.post('/api/student/addCourse', this.form).then(function () {
-        _this2.$router.push({
+        _this3.$router.push({
           name: 'student'
         });
 
         Notification.success();
       })["catch"](function (error) {
-        return _this2.errors = error.response.data.errors;
+        return _this3.errors = error.response.data.errors;
       });
     },
     startEditing: function startEditing(index) {
@@ -4336,7 +4395,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }
 }, _defineProperty(_props$components$cre, "created", function created() {
-  this.getStudent(); // this.allCourses();
+  this.getStudent();
+  this.allCourses();
 }), _defineProperty(_props$components$cre, "close", function close() {
   this.$emit("closed");
 }), _props$components$cre);
@@ -52644,233 +52704,414 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12 mb-4" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header py-3 align-items-center " }, [
-            _c("div", { staticClass: "flex flex-row" }, [
-              _c("h4", { staticClass: "font-weight-bold text-primary mr-2" }, [
-                _vm._v("Student name:")
-              ]),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-bold text-black" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.student.first_name +
-                      " " +
-                      _vm.student.middle_name +
-                      " " +
-                      _vm.student.last_name
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12 mb-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header py-3 align-items-center " }, [
+              _c("div", { staticClass: "flex flex-row" }, [
+                _c(
+                  "h4",
+                  { staticClass: "font-weight-bold text-primary mr-2" },
+                  [_vm._v("Student name:")]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "font-weight-bold text-black" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.student.first_name +
+                        " " +
+                        _vm.student.middle_name +
+                        " " +
+                        _vm.student.last_name
+                    )
                   )
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-row" }, [
-              _c("h4", { staticClass: "font-weight-bold text-primary mr-2" }, [
-                _vm._v("ID:")
+                ])
               ]),
               _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-bold text-black" }, [
-                _vm._v(_vm._s(_vm.student.identifier))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-row" }, [
-              _c("h4", { staticClass: "font-weight-bold text-primary mr-2" }, [
-                _vm._v("Level:")
+              _c("div", { staticClass: "flex flex-row" }, [
+                _c(
+                  "h4",
+                  { staticClass: "font-weight-bold text-primary mr-2" },
+                  [_vm._v("ID:")]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "font-weight-bold text-black" }, [
+                  _vm._v(_vm._s(_vm.student.identifier))
+                ])
               ]),
               _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-bold text-black" }, [
-                _vm._v(_vm._s(_vm.student.level_id))
+              _c("div", { staticClass: "flex flex-row" }, [
+                _c(
+                  "h4",
+                  { staticClass: "font-weight-bold text-primary mr-2" },
+                  [_vm._v("Level:")]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "font-weight-bold text-black" }, [
+                  _vm._v(_vm._s(_vm.student.level_id))
+                ])
               ])
             ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "align-items-center flex flex-row justify-content-between"
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.searchTerm,
-              expression: "searchTerm"
-            }
-          ],
-          staticClass: "form-control  my-3",
-          staticStyle: { width: "300px" },
-          attrs: { type: "text", placeholder: "Search using Course Name" },
-          domProps: { value: _vm.searchTerm },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "align-items-center flex flex-row justify-content-between"
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.searchTerm,
+                expression: "searchTerm"
               }
-              _vm.searchTerm = $event.target.value
+            ],
+            staticClass: "form-control  my-3",
+            staticStyle: { width: "300px" },
+            attrs: { type: "text", placeholder: "Search using Course Name" },
+            domProps: { value: _vm.searchTerm },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.searchTerm = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "py-1 px-3 mr-3 rounded-md bg-blue-600 hover:bg-gray-400 cursor-pointer text-white",
+                on: {
+                  click: function($event) {
+                    _vm.showModel = true
+                  }
+                }
+              },
+              [_vm._v("\n              Add Course\n        ")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12 mb-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c(
+                "table",
+                { staticClass: "table align-items-center table-flush" },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.student.courses, function(course) {
+                      return _c("tr", { key: course.id }, [
+                        _c("td", [_vm._v(_vm._s(course.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(course.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(course.description))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(course.pivot.work_out))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(course.pivot.activity_out))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(course.pivot.final_out))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          course.pivot.work_out +
+                            course.pivot.activity_out +
+                            course.pivot.final_out >
+                          100
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "badge badge-pill badge-success"
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        course.pivot.work_out +
+                                          course.pivot.activity_out +
+                                          course.pivot.final_out
+                                      ) +
+                                      " "
+                                  )
+                                ]
+                              )
+                            : 50 >=
+                              course.pivot.work_out +
+                                course.pivot.activity_out +
+                                course.pivot.final_out
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "badge badge-pill badge-danger"
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        course.pivot.work_out +
+                                          course.pivot.activity_out +
+                                          course.pivot.final_out
+                                      ) +
+                                      " "
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "span",
+                                {
+                                  staticClass: "badge badge-pill badge-warning"
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        course.pivot.work_out +
+                                          course.pivot.activity_out +
+                                          course.pivot.final_out
+                                      ) +
+                                      " "
+                                  )
+                                ]
+                              )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  _vm.editing = true
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteStudent(_vm.student.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("font", { attrs: { color: "#ffffff" } }, [
+                                _vm._v("Delete")
+                              ])
+                            ],
+                            1
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "app-model",
+        {
+          attrs: { width: 400, height: 250, show: _vm.showModel },
+          on: {
+            closed: function($event) {
+              _vm.showModel = false
             }
           }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "py-1 px-3 mr-3 rounded-md bg-blue-600 hover:bg-gray-400 cursor-pointer text-white",
-              on: {
-                click: function($event) {
-                  _vm.showModel = true
-                }
-              }
-            },
-            [_vm._v("\n              Add Course\n        ")]
-          )
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12 mb-4" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "table-responsive" }, [
+        },
+        [
+          _c("div", { staticClass: "flex" }, [
             _c(
-              "table",
-              { staticClass: "table align-items-center table-flush" },
+              "div",
+              { staticClass: "rounded-sm p-4 text-black w-full mr-2" },
               [
-                _vm._m(1),
-                _vm._v(" "),
                 _c(
-                  "tbody",
-                  _vm._l(_vm.student.courses, function(course) {
-                    return _c("tr", { key: course.id }, [
-                      _c("td", [_vm._v(_vm._s(course.id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.description))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.pivot.work_out))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.pivot.activity_out))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.pivot.final_out))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        course.pivot.work_out +
-                          course.pivot.activity_out +
-                          course.pivot.final_out >
-                        100
-                          ? _c(
-                              "span",
-                              { staticClass: "badge badge-pill badge-success" },
-                              [
-                                _vm._v(
-                                  " " +
-                                    _vm._s(
-                                      course.pivot.work_out +
-                                        course.pivot.activity_out +
-                                        course.pivot.final_out
-                                    ) +
-                                    " "
-                                )
-                              ]
-                            )
-                          : 50 >=
-                            course.pivot.work_out +
-                              course.pivot.activity_out +
-                              course.pivot.final_out
-                          ? _c(
-                              "span",
-                              { staticClass: "badge badge-pill badge-danger" },
-                              [
-                                _vm._v(
-                                  " " +
-                                    _vm._s(
-                                      course.pivot.work_out +
-                                        course.pivot.activity_out +
-                                        course.pivot.final_out
-                                    ) +
-                                    " "
-                                )
-                              ]
-                            )
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-pill badge-warning" },
-                              [
-                                _vm._v(
-                                  " " +
-                                    _vm._s(
-                                      course.pivot.work_out +
-                                        course.pivot.activity_out +
-                                        course.pivot.final_out
-                                    ) +
-                                    " "
-                                )
-                              ]
-                            )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
+                  "div",
+                  {
+                    staticClass: "section-block p-0 m-0",
+                    staticStyle: { background: "#f9f9f9" }
+                  },
+                  [
+                    _c("div", { staticClass: "container" }, [
+                      _c("div", { staticClass: "row" }, [
                         _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-sm btn-primary",
-                            on: {
-                              click: function($event) {
-                                _vm.editing = true
-                              }
-                            }
-                          },
-                          [_vm._v("Edit")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-sm btn-danger",
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteStudent(_vm.student.id)
-                              }
-                            }
-                          },
+                          "div",
+                          { staticClass: "col-md-12 col-sm-12 col-12" },
                           [
-                            _c("font", { attrs: { color: "#ffffff" } }, [
-                              _vm._v("Delete")
-                            ])
-                          ],
-                          1
+                            _c("h5", { staticClass: "py-3" }, [
+                              _vm._v("Add Courses")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "form",
+                              {
+                                staticClass: "user",
+                                attrs: { enctype: "multipart/form-data" },
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.insertCourse.apply(
+                                      null,
+                                      arguments
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("div", { staticClass: "row mt-10" }, [
+                                  _c("input", { attrs: { type: "hidden" } }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-md-3 col-12" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticStyle: {
+                                            "padding-top": "20px"
+                                          },
+                                          attrs: { for: "" }
+                                        },
+                                        [_vm._v("Courses")]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-md-9 col-12 mb-3" },
+                                    [
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.student.course_ids,
+                                              expression: "student.course_ids"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "form-control form-control-sm mb-3",
+                                          attrs: { multiple: "" },
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.student,
+                                                "course_ids",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            }
+                                          }
+                                        },
+                                        _vm._l(_vm.courses, function(course) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: course.id,
+                                              domProps: { value: course.id }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                      " +
+                                                  _vm._s(course.name) +
+                                                  "\n                                                    "
+                                              )
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "rounded-sm py-2 px-2 m-2 text-white bg-blue-600 hover:opacity-75 cursor-pointer disabled:opacity-25",
+                                    attrs: { type: "submit" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                              Submit\n                                          "
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
                         )
                       ])
                     ])
-                  }),
-                  0
+                  ]
                 )
               ]
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer" })
-        ])
-      ])
-    ])
-  ])
+          _c("div", { staticClass: "mt-4" })
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {

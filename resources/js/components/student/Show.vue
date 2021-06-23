@@ -80,7 +80,7 @@
                             <span v-if='course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out > 100'  class="badge badge-pill badge-success"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
                             <span v-else-if=' 50 >= course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out'  class="badge badge-pill badge-danger"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
                             <span v-else class="badge badge-pill badge-warning"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
-                            
+
                           </td>    
                   
                           <td>
@@ -99,6 +99,61 @@
     </div>
       
       <!--Row-->
+        <!-- <add-course-model :show="showModel" @closed="showModel = false"></add-course-model> -->
+  <app-model
+        :width="400"
+        :height="250"
+        :show="showModel"
+        @closed="showModel = false"
+    >
+        <div class="flex">
+            <div class="rounded-sm p-4 text-black w-full mr-2" >
+                <!-- Feedback Section START -->
+                    <div class="section-block p-0 m-0" style="background: #f9f9f9;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                   
+                                        <h5 class="py-3">Add Courses</h5>
+                                        <form class="user" @submit.prevent="insertCourse" enctype="multipart/form-data">
+                                            <div class="row mt-10">
+                                                <input type="hidden" >
+                                             
+                                               <div class="col-md-3 col-12">
+                                                   <label for="" style="padding-top: 20px;">Courses</label>
+                                               </div>
+                                                <div class="col-md-9 col-12 mb-3">
+                                                    <select  class="form-control form-control-sm mb-3"  v-model="student.course_ids" multiple>
+                                                      <option v-for="course in courses" :value="course.id" :key="course.id">
+                                                        {{ course.name }}
+                                                      </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="rounded-sm py-2 px-2 m-2 text-white bg-blue-600 hover:opacity-75 cursor-pointer disabled:opacity-25"
+                                            >
+                                                Submit
+                                            </button>                                           
+                                        </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feedback Section END -->
+
+
+            </div>
+
+           
+        </div>
+
+        <div class="mt-4">
+       
+        </div> 
+    
+  </app-model>
+
  
   </div>
 </template>
@@ -137,6 +192,7 @@
         showBoards: false,
         showModel: false,
         searchTerm:'',
+        courses:[]
       }
     }, 
     // mounted(){
@@ -146,11 +202,11 @@
   directives: {onClickaway},
 
   methods:{
-    // allCourses(){
-    //   axios.get('/api/course/')
-    //   .then(({data}) => (this.courses = data))
-    //   .catch()
-    // },
+    allCourses(){
+      axios.get('/api/course/')
+      .then(({data}) => (this.courses = data))
+      .catch()
+    },
     getStudent(){
      let id = this.$route.params.id
       axios.get('/api/student/'+id)
@@ -193,7 +249,7 @@
 
   created(){
     this.getStudent();
-    // this.allCourses();
+    this.allCourses();
   },
 
   close(){
