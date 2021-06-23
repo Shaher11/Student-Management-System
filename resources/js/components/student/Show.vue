@@ -9,11 +9,15 @@
           <div class="card-header py-3 align-items-center ">
             <div class="flex flex-row">
               <h4 class="font-weight-bold text-primary mr-2">Student name:</h4> 
-              <h4 class="font-weight-bold text-black">{{ form.first_name +' '+ form.middle_name +' '+ form.last_name}}</h4>
+              <h4 class="font-weight-bold text-black">{{ student.first_name +' '+ student.middle_name +' '+ student.last_name}}</h4>
+            </div>
+             <div class="flex flex-row">
+              <h4 class="font-weight-bold text-primary mr-2">ID:</h4> 
+              <h4 class="font-weight-bold text-black">{{ student.identifier }}</h4>
             </div>
              <div class="flex flex-row">
               <h4 class="font-weight-bold text-primary mr-2">Level:</h4> 
-              <h4 class="font-weight-bold text-black">{{ form.level_id }}</h4>
+              <h4 class="font-weight-bold text-black">{{ student.level_id }}</h4>
             </div>
           </div>
         </div>
@@ -49,6 +53,10 @@
                           <th>Index</th>
                           <th>Course Name</th>
                           <th>Description</th>
+                          <th>Work out</th>
+                          <th>Activity out</th>
+                          <th>Final out</th>
+                          <th>Total</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -59,6 +67,11 @@
                           <td>{{ course.id }}</td>
                           <td>{{ course.name }}</td>
                           <td>{{ course.description}}</td>
+                          <td>{{ course.work_out}}</td>
+                          <td>{{ course.activity_out}}</td>
+                          <td>{{ course.final_out}}</td>
+                          <!--  count work_out, activity_out, final_out-->
+                          <td>{{ course.final_out}}</td>    
                           <td>
                             <router-link :to="{name: 'student-profile', params:{id:student.id}}" class="btn btn-sm btn-info">Show</router-link>
                             <router-link :to="{name: 'edit-student', params:{id:student.id}}" class="btn btn-sm btn-primary">Edit</router-link>
@@ -104,11 +117,10 @@
     
     data(){
       return{
- 
-        form:{
-
-          student_id: null,
-          course_ids : [],
+        // student:{},
+        student:{
+          // student_id: null,
+          // course_ids : [],
         },
 
         showBoards: false,
@@ -116,25 +128,25 @@
         searchTerm:'',
       }
     }, 
-    created(){
-      let id = this.$route.params.id
-      axios.get('/api/student/'+id)
-      .then(({data}) => (this.form = data))
-      .catch(console.log('error'))
-    },
+    // created(){
+    //   let id = this.$route.params.id
+    //   axios.get('/api/student/'+id)
+    //   .then(({data}) => (this.student = data))
+    //   .catch(console.log('error'))
+    // },
   
   directives: {onClickaway},
 
   methods:{
-    allCourses(){
-      axios.get('/api/course/')
-      .then(({data}) => (this.courses = data))
-      .catch()
-    },
-    student(){
+    // allCourses(){
+    //   axios.get('/api/course/')
+    //   .then(({data}) => (this.courses = data))
+    //   .catch()
+    // },
+    getStudent(){
      let id = this.$route.params.id
       axios.get('/api/student/'+id)
-      .then(({data}) => (this.form = data))
+      .then(({data}) => (this.student = data))
       .catch(console.log('error'))
     },
 
@@ -150,8 +162,8 @@
   },
 
   created(){
-    this.student();
-    this.allCourses();
+    this.getStudent();
+    // this.allCourses();
   },
 
   close(){

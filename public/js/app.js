@@ -4226,6 +4226,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4245,59 +4258,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      form: {
-        student_id: null,
-        course_ids: []
+      // student:{},
+      student: {// student_id: null,
+        // course_ids : [],
       },
       showBoards: false,
       showModel: false,
       searchTerm: ''
     };
+  },
+  // created(){
+  //   let id = this.$route.params.id
+  //   axios.get('/api/student/'+id)
+  //   .then(({data}) => (this.student = data))
+  //   .catch(console.log('error'))
+  // },
+  directives: {
+    onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_1__.directive
+  },
+  methods: {
+    // allCourses(){
+    //   axios.get('/api/course/')
+    //   .then(({data}) => (this.courses = data))
+    //   .catch()
+    // },
+    getStudent: function getStudent() {
+      var _this = this;
+
+      var id = this.$route.params.id;
+      axios.get('/api/student/' + id).then(function (_ref) {
+        var data = _ref.data;
+        return _this.student = data;
+      })["catch"](console.log('error'));
+    },
+    insertCourse: function insertCourse() {
+      var _this2 = this;
+
+      axios.post('/api/student/addCourse', this.form).then(function () {
+        _this2.$router.push({
+          name: 'student'
+        });
+
+        Notification.success();
+      })["catch"](function (error) {
+        return _this2.errors = error.response.data.errors;
+      });
+    }
   }
 }, _defineProperty(_props$components$cre, "created", function created() {
-  var _this = this;
-
-  var id = this.$route.params.id;
-  axios.get('/api/student/' + id).then(function (_ref) {
-    var data = _ref.data;
-    return _this.form = data;
-  })["catch"](console.log('error'));
-}), _defineProperty(_props$components$cre, "directives", {
-  onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_1__.directive
-}), _defineProperty(_props$components$cre, "methods", {
-  allCourses: function allCourses() {
-    var _this2 = this;
-
-    axios.get('/api/course/').then(function (_ref2) {
-      var data = _ref2.data;
-      return _this2.courses = data;
-    })["catch"]();
-  },
-  student: function student() {
-    var _this3 = this;
-
-    var id = this.$route.params.id;
-    axios.get('/api/student/' + id).then(function (_ref3) {
-      var data = _ref3.data;
-      return _this3.form = data;
-    })["catch"](console.log('error'));
-  },
-  insertCourse: function insertCourse() {
-    var _this4 = this;
-
-    axios.post('/api/student/addCourse', this.form).then(function () {
-      _this4.$router.push({
-        name: 'student'
-      });
-
-      Notification.success();
-    })["catch"](function (error) {
-      return _this4.errors = error.response.data.errors;
-    });
-  }
-}), _defineProperty(_props$components$cre, "created", function created() {
-  this.student();
-  this.allCourses();
+  this.getStudent(); // this.allCourses();
 }), _defineProperty(_props$components$cre, "close", function close() {
   this.$emit("closed");
 }), _props$components$cre);
@@ -52618,13 +52627,23 @@ var render = function() {
               _c("h4", { staticClass: "font-weight-bold text-black" }, [
                 _vm._v(
                   _vm._s(
-                    _vm.form.first_name +
+                    _vm.student.first_name +
                       " " +
-                      _vm.form.middle_name +
+                      _vm.student.middle_name +
                       " " +
-                      _vm.form.last_name
+                      _vm.student.last_name
                   )
                 )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex flex-row" }, [
+              _c("h4", { staticClass: "font-weight-bold text-primary mr-2" }, [
+                _vm._v("ID:")
+              ]),
+              _vm._v(" "),
+              _c("h4", { staticClass: "font-weight-bold text-black" }, [
+                _vm._v(_vm._s(_vm.student.identifier))
               ])
             ]),
             _vm._v(" "),
@@ -52634,7 +52653,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("h4", { staticClass: "font-weight-bold text-black" }, [
-                _vm._v(_vm._s(_vm.form.level_id))
+                _vm._v(_vm._s(_vm.student.level_id))
               ])
             ])
           ])
@@ -52714,6 +52733,14 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(course.name))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(course.description))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(course.work_out))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(course.activity_out))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(course.final_out))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(course.final_out))]),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -52809,6 +52836,14 @@ var staticRenderFns = [
         _c("th", [_vm._v("Course Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Work out")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Activity out")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Final out")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])

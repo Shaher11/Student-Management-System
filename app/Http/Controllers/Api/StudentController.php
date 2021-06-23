@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with(['courses'])->orderBy('id', 'desc')->get();
+        $students = Student::with(['courses'])->get();
         return response()->json($students);
     }
 
@@ -49,7 +49,7 @@ class StudentController extends Controller
      */
     public function show($student_id)
     {
-        $student = Student::findOrFail($student_id); 
+        $student = Student::with(['courses'])->findOrFail($student_id); 
         $student_course = $student->courses; 
         
         return response()->json($student, 200);

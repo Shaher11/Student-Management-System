@@ -21,7 +21,7 @@
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
                   </div>
-                  <div class="table-responsive">
+                  <div class="table-responsive" >
                     <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                         <tr>
@@ -45,7 +45,7 @@
                           <td>{{ student.first_name +' '+ student.middle_name +' '+ student.last_name }}</td>
                           <td>{{ student.email }}</td>
                           <td>{{ student.level_id }}</td>
-                          <td>{{ student.program_id }}</td>
+                          <td>{{ student.program_id}}</td>
                           <td><span v-for="(course, j) in student.courses" :key="j" class="badge badge-pill badge-info m-1">{{course.name}}</span></td>
                           <td>{{ student.birthdate }}</td>
                           <td>
@@ -85,6 +85,7 @@
         searchTerm:''
       }
     },
+
     computed:{
       filtersearch(){
       return this.students.filter(student => {
