@@ -188,7 +188,9 @@
         editGrade: {},
         editGadeOri: {},
 
-        student:{},
+        student:{
+          course_ids:[]
+        },
         showBoards: false,
         showModel: false,
         searchTerm:'',

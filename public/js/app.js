@@ -4328,7 +4328,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       editOffset: -1,
       editGrade: {},
       editGadeOri: {},
-      student: {},
+      student: {
+        course_ids: []
+      },
       showBoards: false,
       showModel: false,
       searchTerm: '',
