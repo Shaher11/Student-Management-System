@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::with(['courses'])->orderBy('id', 'desc')->get();
         return response()->json($students);
     }
 

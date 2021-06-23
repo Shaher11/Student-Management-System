@@ -15,7 +15,7 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::factory(10)->create();
+       $user= Student::factory(10)->create()
         
         // $courses = Course::all();
         // $students = Student::all();
@@ -26,9 +26,9 @@ class StudentSeeder extends Seeder
         //     }
         // }
         
-        // ->each(function ($user) {
-        //     $user->certificates()->saveMany(Certificate::factory( mt_rand(1,3) )
-        //     ->make());
-        // }) 
+        ->each(function ($user) {
+            $user->courses()->saveMany(Course::factory( mt_rand(1,3) )
+            ->make());
+        }); 
     }
 }

@@ -28,9 +28,10 @@
                           <th>Index</th>
                           <th>ID</th>
                           <th>Full Name</th>
+                          <th>Email</th>
                           <th>Level</th>
                           <th>Program</th>
-                          <th>Email</th>
+                          <th>Course</th>
                           <th>Date of birth</th>
                           <!-- <th>Gender</th> -->
                           <th>Action</th>
@@ -38,13 +39,14 @@
                       </thead>
                       <tbody>
           
-                        <tr v-for="student in filtersearch" :key="student.id">
+                        <tr v-for="(student, i) in filtersearch" :key="i">
                           <td>{{ student.id }}</td>
                           <td>{{ student.identifier }}</td>
                           <td>{{ student.first_name +' '+ student.middle_name +' '+ student.last_name }}</td>
+                          <td>{{ student.email }}</td>
                           <td>{{ student.level_id }}</td>
                           <td>{{ student.program_id }}</td>
-                          <td>{{ student.email }}</td>
+                          <td><span v-for="(course, j) in student.courses" :key="j" class="badge badge-pill badge-info m-1">{{course.name}}</span></td>
                           <td>{{ student.birthdate }}</td>
                           <td>
                             <router-link :to="{name: 'student-profile', params:{id:student.id}}" class="btn btn-sm btn-info">Show</router-link>

@@ -54,11 +54,11 @@
                       </thead>
                       <tbody>
           
-                      <tr v-for="course in courses" :key="course.id">
+                      <tr v-for="course in student.courses" :key="course.id">
 
                           <td>{{ course.id }}</td>
                           <td>{{ course.name }}</td>
-                          <td>{{ course.description }}</td>
+                          <td>{{ course.description}}</td>
                           <td>
                             <router-link :to="{name: 'student-profile', params:{id:student.id}}" class="btn btn-sm btn-info">Show</router-link>
                             <router-link :to="{name: 'edit-student', params:{id:student.id}}" class="btn btn-sm btn-primary">Edit</router-link>
@@ -75,61 +75,7 @@
     </div>
       
       <!--Row-->
-   <!-- <add-course-model :show="showModel" @closed="showModel = false"></add-course-model> -->
-  <app-model
-        :width="400"
-        :height="250"
-        :show="showModel"
-        @closed="showModel = false"
-    >
-        <div class="flex">
-            <div class="rounded-sm p-4 text-black w-full mr-2" >
-                <!-- Feedback Section START -->
-                    <div class="section-block p-0 m-0" style="background: #f9f9f9;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-12">
-                                   
-                                        <h5 class="py-3">Add Courses</h5>
-                                        <form class="user" @submit.prevent="insertCourse" enctype="multipart/form-data">
-                                            <div class="row mt-10">
-                                                <input type="hidden"  v-model="form.student_id">
-                                             
-                                               <div class="col-md-3 col-12">
-                                                   <label for="" style="padding-top: 20px;">Courses</label>
-                                               </div>
-                                                <div class="col-md-9 col-12 mb-3">
-                                                    <select  class="form-control form-control-sm mb-3"  v-model="form.course_ids" multiple>
-                                                      <option v-for="course in courses" :value="course.id" :key="course.id">
-                                                        {{ course.name }}
-                                                      </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="rounded-sm py-2 px-2 m-2 text-white bg-blue-600 hover:opacity-75 cursor-pointer disabled:opacity-25"
-                                            >
-                                                Submit
-                                            </button>                                           
-                                        </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Feedback Section END -->
-
-
-            </div>
-
-           
-        </div>
-
-        <div class="mt-4">
-       
-        </div> 
-    
-  </app-model>
-
+ 
   </div>
 </template>
 
@@ -167,7 +113,6 @@
 
         showBoards: false,
         showModel: false,
-        courses:[],
         searchTerm:'',
       }
     }, 
