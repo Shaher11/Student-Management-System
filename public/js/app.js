@@ -4239,6 +4239,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4258,20 +4269,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      // student:{},
-      student: {// student_id: null,
-        // course_ids : [],
-      },
+      // editing:false,
+      editOffset: -1,
+      editGrade: {},
+      editGadeOri: {},
+      student: {},
       showBoards: false,
       showModel: false,
       searchTerm: ''
     };
   },
-  // created(){
-  //   let id = this.$route.params.id
-  //   axios.get('/api/student/'+id)
-  //   .then(({data}) => (this.student = data))
-  //   .catch(console.log('error'))
+  // mounted(){
+  //     this.$refs.card.focus();
   // },
   directives: {
     onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_1__.directive
@@ -4303,6 +4312,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         return _this2.errors = error.response.data.errors;
       });
+    },
+    startEditing: function startEditing(index) {
+      this.editOffset = index;
+      this.editGrade = this.posts[index];
+      this.editGradeOri = JSON.parse(JSON.stringify(this.editPost)); // set focus ke element input
+
+      this.$nextTick(function () {
+        console.log('item-user-' + this.editOffset);
+        document.getElementById('item-user-' + this.editOffset).focus();
+      }.bind(this));
+    },
+    updatePost: function updatePost() {
+      this.editOffset = -1;
+      this.editPostOri = {};
+      this.editPost = {};
+    },
+    cancelEditing: function cancelEditing() {
+      this.$set(this.posts, this.editOffset, this.editPostOri);
+      this.editOffset = -1;
+      this.editPostOri = {};
+      this.editPost = {};
     }
   }
 }, _defineProperty(_props$components$cre, "created", function created() {
@@ -52734,65 +52764,100 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(course.description))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.work_out))]),
+                      _c("td", [_vm._v(_vm._s(course.pivot.work_out))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.activity_out))]),
+                      _c("td", [_vm._v(_vm._s(course.pivot.activity_out))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.final_out))]),
+                      _c("td", [_vm._v(_vm._s(course.pivot.final_out))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(course.final_out))]),
+                      _c("td", [
+                        course.pivot.work_out +
+                          course.pivot.activity_out +
+                          course.pivot.final_out >
+                        100
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-success" },
+                              [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(
+                                      course.pivot.work_out +
+                                        course.pivot.activity_out +
+                                        course.pivot.final_out
+                                    ) +
+                                    " "
+                                )
+                              ]
+                            )
+                          : 50 >=
+                            course.pivot.work_out +
+                              course.pivot.activity_out +
+                              course.pivot.final_out
+                          ? _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-danger" },
+                              [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(
+                                      course.pivot.work_out +
+                                        course.pivot.activity_out +
+                                        course.pivot.final_out
+                                    ) +
+                                    " "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "span",
+                              { staticClass: "badge badge-pill badge-warning" },
+                              [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(
+                                      course.pivot.work_out +
+                                        course.pivot.activity_out +
+                                        course.pivot.final_out
+                                    ) +
+                                    " "
+                                )
+                              ]
+                            )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-info",
-                              attrs: {
-                                to: {
-                                  name: "student-profile",
-                                  params: { id: _vm.student.id }
-                                }
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-primary",
+                            on: {
+                              click: function($event) {
+                                _vm.editing = true
                               }
-                            },
-                            [_vm._v("Show")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-primary",
-                              attrs: {
-                                to: {
-                                  name: "edit-student",
-                                  params: { id: _vm.student.id }
-                                }
+                            }
+                          },
+                          [_vm._v("Edit")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-danger",
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteStudent(_vm.student.id)
                               }
-                            },
-                            [_vm._v("Edit")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-danger",
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteStudent(_vm.student.id)
-                                }
-                              }
-                            },
-                            [
-                              _c("font", { attrs: { color: "#ffffff" } }, [
-                                _vm._v("Delete")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
+                            }
+                          },
+                          [
+                            _c("font", { attrs: { color: "#ffffff" } }, [
+                              _vm._v("Delete")
+                            ])
+                          ],
+                          1
+                        )
+                      ])
                     ])
                   }),
                   0

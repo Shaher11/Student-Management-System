@@ -67,14 +67,25 @@
                           <td>{{ course.id }}</td>
                           <td>{{ course.name }}</td>
                           <td>{{ course.description}}</td>
-                          <td>{{ course.work_out}}</td>
-                          <td>{{ course.activity_out}}</td>
-                          <td>{{ course.final_out}}</td>
+                          <td>{{ course.pivot.work_out}}</td>
+                          <td>{{ course.pivot.activity_out}}</td>
+                          <td>{{ course.pivot.final_out}}</td>
                           <!--  count work_out, activity_out, final_out-->
-                          <td>{{ course.final_out}}</td>    
                           <td>
-                            <router-link :to="{name: 'student-profile', params:{id:student.id}}" class="btn btn-sm btn-info">Show</router-link>
-                            <router-link :to="{name: 'edit-student', params:{id:student.id}}" class="btn btn-sm btn-primary">Edit</router-link>
+                            <!-- <span v-if='course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out > 100'  class="badge badge-pill badge-success"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span> -->
+                            
+                            
+                            
+                            
+                            <span v-if='course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out > 100'  class="badge badge-pill badge-success"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
+                            <span v-else-if=' 50 >= course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out'  class="badge badge-pill badge-danger"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
+                            <span v-else class="badge badge-pill badge-warning"> {{ course.pivot.work_out + course.pivot.activity_out + course.pivot.final_out }} </span>
+                            
+                          </td>    
+                  
+                          <td>
+                            <!-- <router-link :to="{name: 'student-profile', params:{id:student.id}}" class="btn btn-sm btn-info">Show</router-link> -->
+                            <button @click="editing = true"  class="btn btn-sm btn-primary">Edit</button>
                             <button @click="deleteStudent(student.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></button>
                           </td>
                       </tr>
@@ -117,22 +128,19 @@
     
     data(){
       return{
-        // student:{},
-        student:{
-          // student_id: null,
-          // course_ids : [],
-        },
+        // editing:false,
+        editOffset: -1,
+        editGrade: {},
+        editGadeOri: {},
 
+        student:{},
         showBoards: false,
         showModel: false,
         searchTerm:'',
       }
     }, 
-    // created(){
-    //   let id = this.$route.params.id
-    //   axios.get('/api/student/'+id)
-    //   .then(({data}) => (this.student = data))
-    //   .catch(console.log('error'))
+    // mounted(){
+    //     this.$refs.card.focus();
     // },
   
   directives: {onClickaway},
@@ -158,6 +166,28 @@
        })
        .catch(error =>this.errors = error.response.data.errors)
      },
+
+    startEditing(index) {
+      this.editOffset = index
+      this.editGrade = this.posts[index]
+      this.editGradeOri = JSON.parse(JSON.stringify(this.editPost))
+      // set focus ke element input
+      this.$nextTick(function(){
+        console.log('item-user-'+this.editOffset)
+        document.getElementById('item-user-'+this.editOffset).focus()
+      }.bind(this))
+    },
+    updatePost() {
+      this.editOffset = -1
+      this.editPostOri = {}
+      this.editPost = {}
+    },
+    cancelEditing() {
+      this.$set(this.posts, this.editOffset, this.editPostOri)
+      this.editOffset = -1
+      this.editPostOri = {}
+      this.editPost = {}
+    }
 
   },
 
